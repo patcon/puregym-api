@@ -24,90 +24,137 @@ paths:
       responses:
         200:
           description: ''
+      security:
+      - oauth2: []
   /member/appversion:
     post:
       summary: "Update app version"
       responses:
         200:
           description: ''
+      security:
+      - oauth2: []
   /member/qrcode:
     get:
       summary: "Get new access QR code"
       responses:
         200:
           description: ''
+      security:
+      - oauth2: []
   /member/membership:
     get:
       summary: "List gym memberships"
       responses:
         200:
           description: ''
+      security:
+      - oauth2: []
   /member/membership/options:
     get:
       summary: "List membership options"
       responses:
         200:
           description: ''
+      security:
+      - oauth2: []
   /member/questionnaires/answers:
     get:
       summary: "Get answers to current questionnaire"
       responses:
         200:
           description: ''
+      security:
+      - oauth2: []
   /member/privileges:
     get:
       summary: "List privileges"
       responses:
         200:
           description: ''
+      security:
+      - oauth2: []
   /gyms:
     get:
       summary: "List all gyms"
       responses:
         200:
           description: ''
+      security:
+      - oauth2: []
   /booking/member:
     get:
       summary: "List booking details for member"
       responses:
         200:
           description: ''
+      security:
+      - oauth2: []
   /booking/byGym:
     get:
       summary: "List booking details for gym"
       responses:
         200:
           description: ''
+      security:
+      - oauth2: []
   /messages/global:
     get:
       summary: "List global messages"
       responses:
-        200:
-          description: ''
+        204:
+          description: 'No new messages'
+      security:
+      - oauth2:
+        - pgcapi
   /messages/gym:
     get:
       summary: "List messages for gym"
+      parameters:
+      - in: query
+        type: integer
+        name: gymId
+        default: 150
       responses:
-        200:
-          description: ''
+        204:
+          description: 'No new messages'
+      security:
+      - oauth2:
+        - pgcapi
   /messages/appUpgrade:
     get:
       summary: "List messages for app upgrades"
+      parameters:
+      - in: query
+        type: integer
+        name: appVersion
+        default: 145
       responses:
         200:
-          description: ''
+          description: 'App version warning message'
+          schema:
+            $ref: "#/definitions/AppVersionMessageResponse"
+        204:
+          description: 'No new messages'
+      security:
+      - oauth2:
+        - pgcapi
   /gymSessions/member:
     get:
       summary: "Get full gym visit data for member"
       responses:
         200:
           description: ''
+      security:
+      - oauth2: []
   /gymSessions/gym/weeklySessions:
     get:
       summary: "Get summarized gym visit stats for gym"
       responses:
         200:
           description: ''
+      security:
+      - oauth2: []
   /buddies/shareLink:
     get:
       summary: "Get referral link"
@@ -774,6 +821,15 @@ definitions:
       TranslatedUrl:
         type: "string"
         example: "https://www.puregym.com/join/friend/?xxxxxxxxxxxxxxxxxxxx"
+  AppVersionMessageResponse:
+    type: object
+    properties:
+      MessageId:
+        type: string
+        example: AppVersionSlightlyBehind
+      Level:
+        type: string
+        example: NegativeLow
 externalDocs:
   description: "GitHub repo"
   url: "https://github.com/patcon/puregym-api"
