@@ -70,11 +70,7 @@ paths:
         "200":
           description: "successful operation"
           schema:
-            type: "object"
-            properties:
-              translatedUrl:
-                type: "string"
-                example: "https://www.puregym.com/join/friend/?xxxxxxxxxxxxxxxxxxxx"
+            $ref: "#/definitions/ShareLinkResponse"
       security:
       - oauth2:
         - pgcapi
@@ -759,6 +755,12 @@ definitions:
         type: "string"
       message:
         type: "string"
+  ShareLinkResponse:
+    type: "object"
+    properties:
+      TranslatedUrl:
+        type: "string"
+        example: "https://www.puregym.com/join/friend/?xxxxxxxxxxxxxxxxxxxx"
 externalDocs:
   description: "GitHub repo"
   url: "https://github.com/patcon/puregym-api"
