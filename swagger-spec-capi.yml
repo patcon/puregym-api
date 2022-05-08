@@ -38,8 +38,6 @@ paths:
   /member/privileges:
     get:
       summary: "List privileges"
-  /messages/appUpgrade:
-    get:
   /gyms:
     get:
       summary: "List all gyms"
