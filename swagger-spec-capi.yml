@@ -66,6 +66,15 @@ paths:
   /buddies/shareLink:
     get:
       summary: "Get referral link"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "object"
+            properties:
+              translatedUrl:
+                type: "string"
+                example: "https://www.puregym.com/join/friend/?xxxxxxxxxxxxxxxxxxxx"
       security:
       - oauth2:
         - pgcapi
