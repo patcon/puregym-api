@@ -21,48 +21,93 @@ paths:
   /member:
     get:
       summary: "Get current account data"
+      responses:
+        200:
+          description: ''
   /member/appversion:
     post:
       summary: "Update app version"
+      responses:
+        200:
+          description: ''
   /member/qrcode:
     get:
       summary: "Get new access QR code"
+      responses:
+        200:
+          description: ''
   /member/membership:
     get:
       summary: "List gym memberships"
+      responses:
+        200:
+          description: ''
   /member/membership/options:
     get:
       summary: "List membership options"
+      responses:
+        200:
+          description: ''
   /member/questionnaires/answers:
     get:
       summary: "Get answers to current questionnaire"
+      responses:
+        200:
+          description: ''
   /member/privileges:
     get:
       summary: "List privileges"
+      responses:
+        200:
+          description: ''
   /gyms:
     get:
       summary: "List all gyms"
+      responses:
+        200:
+          description: ''
   /booking/member:
     get:
       summary: "List booking details for member"
+      responses:
+        200:
+          description: ''
   /booking/byGym:
     get:
       summary: "List booking details for gym"
+      responses:
+        200:
+          description: ''
   /messages/global:
     get:
       summary: "List global messages"
+      responses:
+        200:
+          description: ''
   /messages/gym:
     get:
       summary: "List messages for gym"
+      responses:
+        200:
+          description: ''
   /messages/appUpgrade:
     get:
       summary: "List messages for app upgrades"
+      responses:
+        200:
+          description: ''
   /gymSessions/member:
     get:
       summary: "Get full gym visit data for member"
+      responses:
+        200:
+          description: ''
   /gymSessions/gym/weeklySessions:
     get:
       summary: "Get summarized gym visit stats for gym"
+      responses:
+        200:
+          description: ''
   /buddies/shareLink:
     get:
       summary: "Get referral link"
@@ -97,10 +142,6 @@ paths:
       responses:
         "405":
           description: "Invalid input"
-      security:
-      - petstore_auth:
-        - "write:pets"
-        - "read:pets"
     put:
       tags:
       - "pet"
@@ -127,10 +168,6 @@ paths:
           description: "Pet not found"
         "405":
           description: "Validation exception"
-      security:
-      - petstore_auth:
-        - "write:pets"
-        - "read:pets"
   /pet/findByStatus:
     get:
       tags:
@@ -164,10 +201,6 @@ paths:
               $ref: "#/definitions/Pet"
         "400":
           description: "Invalid status value"
-      security:
-      - petstore_auth:
-        - "write:pets"
-        - "read:pets"
   /pet/findByTags:
     get:
       tags:
@@ -196,10 +229,6 @@ paths:
               $ref: "#/definitions/Pet"
         "400":
           description: "Invalid tag value"
-      security:
-      - petstore_auth:
-        - "write:pets"
-        - "read:pets"
       deprecated: true
   /pet/{petId}:
     get:
@@ -227,8 +256,6 @@ paths:
           description: "Invalid ID supplied"
         "404":
           description: "Pet not found"
-      security:
-      - api_key: []
     post:
       tags:
       - "pet"
@@ -260,10 +287,6 @@ paths:
       responses:
         "405":
           description: "Invalid input"
-      security:
-      - petstore_auth:
-        - "write:pets"
-        - "read:pets"
     delete:
       tags:
       - "pet"
@@ -289,10 +312,6 @@ paths:
           description: "Invalid ID supplied"
         "404":
           description: "Pet not found"
-      security:
-      - petstore_auth:
-        - "write:pets"
-        - "read:pets"
   /pet/{petId}/uploadImage:
     post:
       tags:
@@ -326,10 +345,6 @@ paths:
           description: "successful operation"
           schema:
             $ref: "#/definitions/ApiResponse"
-      security:
-      - petstore_auth:
-        - "write:pets"
-        - "read:pets"
   /store/inventory:
     get:
       tags:
@@ -348,8 +363,6 @@ paths:
             additionalProperties:
               type: "integer"
               format: "int32"
-      security:
-      - api_key: []
   /store/order:
     post:
       tags:
