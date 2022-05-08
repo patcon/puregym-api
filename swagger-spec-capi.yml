@@ -37,6 +37,7 @@ paths:
   /member/qrcode:
     get:
       summary: "Get new access QR code"
+      operationId: GetQrCode
       responses:
         200:
           description: ''
