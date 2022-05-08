@@ -80,6 +80,10 @@ paths:
       responses:
         200:
           description: ''
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Gym"
       security:
       - oauth2: []
   /booking/member:
@@ -805,6 +809,112 @@ definitions:
         - "sold"
     xml:
       name: "Pet"
+  Gym:
+    type: "object"
+    properties:
+      Id:
+        type: integer
+        example: 1
+      Name:
+        type: string
+        example: Manchester Spinningfields
+      Status:
+        type: string
+        enum:
+        - Open
+      Location:
+        type: object
+        properties:
+          Address:
+            type: object
+            properties:
+              Line1:
+                type: string
+                example: 3 Hardman Street
+              Line2:
+                type: string
+                example: Spinningfields
+              Link3:
+                type: string
+                example: null
+              Town:
+                type: string
+                example: MANCHESTER
+              County:
+                type: string
+                example: GREATER MANCHESTER
+              Province:
+                type: string
+                example: null
+              Postcode:
+                type: string
+                example: M3 3HF
+              Country:
+                type: string
+                example: GB
+          GeoLocation:
+            type: object
+            properties:
+              Longitude:
+                type: number
+                example: -2.2504
+              Latitude:
+                type: number
+                example: 53.4798
+      GymAccess:
+        type: object
+        properties:
+          AccessOptions:
+            type: object
+            properties:
+              PinAccess:
+                type: boolean
+                example: true
+              QrCodeAccess:
+                type: boolean
+                example: true
+          OpeningHours:
+            type: object
+            properties:
+              IsAlwaysOpen:
+                type: boolean
+                example: true
+              OpeningHours:
+                type: array
+                items:
+                  type: object
+          StandardOpeningTimes:
+            type: array
+            items:
+              type: object
+              properties:
+                DayOfWeek:
+                  type: string
+                  example: Sunday
+                StartTime:
+                  type: string
+                  example: "00:00:00"
+                EndTime:
+                  type: string
+                  example: "23:59:00"
+                IsHoliday:
+                  type: boolean
+                  example: false
+              
+          ReopenDate:
+            example: "2021-04-12T00:00:00+01 Europe/London"
+      ContactInfo:
+        type: object
+        properties:
+          PhoneNumber:
+            type: string
+            example: "+44 3450133467"
+          EmailAddress:
+            type: string
+            example: info-manchester@puregym.com
+      TimeZone:
+        type: string
+        example: Europe/London
   ApiResponse:
     type: "object"
     properties:
