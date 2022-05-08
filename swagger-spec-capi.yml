@@ -40,6 +40,8 @@ paths:
       responses:
         200:
           description: ''
+          schema:
+            $ref: "#/definitions/QrCodeResponse"
       security:
       - oauth2: []
   /member/membership:
@@ -925,6 +927,24 @@ definitions:
         type: "string"
       message:
         type: "string"
+  QrCodeResponse:
+    type: object
+    properties:
+      QrCode:
+        type: string
+        example: "exerp:checkin:{gymId}p000000-0000000000000-0123456789abcdef0123456789abcdef"
+      RefreshAt:
+        type: string
+        example: "2022-05-06T12:23:00.5678999Z"
+      ExpiresAt:
+        type: string
+        example: "2022-05-13T12:17:00.5678999Z"
+      RefreshIn:
+        type: string
+        example: "0:01:00"
+      ExpiresIn:
+        type: string
+        example: "167:55:00"
   ShareLinkResponse:
     type: "object"
     properties:
