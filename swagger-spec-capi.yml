@@ -2,6 +2,7 @@ swagger: "2.0"
 info:
   description: |
     Unofficial API documentation for the PureGym mobile app.
+    - To use this web UI, you must first visit: https://cors-anywhere.herokuapp.com
   version: "0.0.1"
   title: "PureGym CAPI"
 host: "cors-anywhere.herokuapp.com"
