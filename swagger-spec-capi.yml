@@ -65,6 +65,9 @@ paths:
   /buddies/shareLink:
     get:
       summary: "Get referral link"
+      security:
+      - oauth2:
+        - pgcapi
   /pet:
     post:
       tags:
@@ -602,16 +605,22 @@ paths:
         "404":
           description: "User not found"
 securityDefinitions:
-  openid:
+  oauth2:
     type: oauth2
+    description: |
+      - Set "username" and "password" to your account email and PIN.
+      - Set "Client credentials location" to `Request body`.
+      - The "client_id" is `ro.client`, and "client_secret" is blank.
+      - Expected scopes for regular users are `pgcapi` and `offline_access`.
     tokenUrl: https://cors-anywhere.herokuapp.com/https://auth.puregym.com/connect/token
     flow: password
     scopes:
+      pgcapi: ''
+      offline_access: ''
       openid: ''
       email: ''
       profile: ''
       identifiers: ''
-      pgcapi: ''
       activation_code_api: ''
       pgeu:businessgateway:production: ''
       account:debtpayment: ''
@@ -621,18 +630,6 @@ securityDefinitions:
       pgeu:paymentsapi:production: ''
       acquisitionservice:development: ''
       pgeu:acquisitionservice:production: ''
-      offline_access: ''
-  petstore_auth:
-    type: "oauth2"
-    authorizationUrl: "http://petstore.swagger.io/oauth/dialog"
-    flow: "implicit"
-    scopes:
-      write:pets: "modify pets in your account"
-      read:pets: "read your pets"
-  api_key:
-    type: "apiKey"
-    name: "api_key"
-    in: "header"
 definitions:
   Order:
     type: "object"
